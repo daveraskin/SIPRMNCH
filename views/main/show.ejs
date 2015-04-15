@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class="row spaceMaker"></div>
+<div class="row spaceMaker"></div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8 text-center">
+    <h2 id="restaurantTitle"><img class="showImage" src="<%=info[0].image%>"> <%= info[0].name %> </h2>
+   </div>
+  <div class="col-sm-2"></div>
+
+</div>
+<div class="row">
+
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 text-center">
+
+      <ul class="list-group blackBack text-left">
+        <li class="list-group-item blackBack">Yelp rating: <%= info[0].rating %></li>
+        <li class="list-group-item blackBack">Address: <%=info[0].location.address%>, Seattle, WA <%=info[0].location.postal_code%></li>
+        <li class="list-group-item blackBack">Menu:</li>
+      </ul>
+   </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
+
+<% include ../partials/footer %>

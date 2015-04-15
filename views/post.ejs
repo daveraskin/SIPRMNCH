@@ -1,0 +1,3 @@
+<%= userName %>
+<li class="list-group-item blackBack postItem"> <%= post.message %> <span class="at"> @ </span><a href="/main/show/<%= post.business %>"> <%= post.business %></a> </li>
+<span class="time"> <%= post.createdAt.getHours() > 12 ? post.createdAt.getHours() - 12 : post.createdAt.getHours()%>:<%= post.createdAt.getMinutes() %> <a data-toggle="modal" href="#commentModal"><i class="glyphicon glyphicon-pencil"></i></a></span>       </ul>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIPRMNCH</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="/css/style.css">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h3 class="mainTitle"> Welcome to </h3>
+<h1 class="mainTitle"> SIPRMNCH </h1>
+
+<div class="row">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-4 indexBtnDiv">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUp">
+      Sign Up
+    </button>
+   </div>
+   <div class="col-sm-4"></div>
+</div>
+<div class="row">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-4 indexBtnDiv">
+    -or-
+   </div>
+   <div class="col-sm-4"></div>
+</div>
+<div class="row">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-4 indexBtnDiv">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signIn">
+      Sign In
+    </button>
+   </div>
+   <div class="col-sm-4"></div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="signUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signUpLabel">Create an account</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/signup" method="POST" role="form">
+          <legend>It's quick and easy!</legend>
+        <ul class="list-group">
+        <div class="form-group">
+          <li class="list-group-item signUpGroup">
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="userName" placeholder="Input field">
+          </li>
+          <li class="list-group-item signUpGroup">
+            <label for="">First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="Input field">
+          </li>
+          <li class="list-group-item signUpGroup">
+            <label for="">Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Input field">
+          </li>
+          <li class="list-group-item signUpGroup">
+            <label for="">Password</label>
+            <input type="text" class="form-control" name="password" placeholder="Input field">
+          </li>
+          <li class="list-group-item signUpGroup">
+            <label for="">Re-enter Password</label>
+            <input type="text" class="form-control" name="password2" placeholder="Input field">
+          </li>
+          <li class="list-group-item signUpGroup">
+            <label for="">Picture?</label>
+            <input type="text" class="form-control" name="pic" placeholder="Input field">
+          </li>
+             </ul>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="signInLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signInLabel">Welcome Back.</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST" role="form">
+          <legend>It's quick and easy!</legend>
+          <ul class="list-group">
+          <div class="form-group">
+          <li class="list-group-item signInGroup">
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="userName" placeholder="Input field">
+          </li>
+          <li class="list-group-item signInGroup">
+            <label for="">Password</label>
+            <input type="text" class="form-control" name="password" placeholder="Input field">
+          </li>
+             </ul>
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

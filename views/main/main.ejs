@@ -1,0 +1,232 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="jumbotron">
+      <div class="container jumboContainer">
+        <h1 id="mainSpan">
+          <span><a href="#" id="glassGlyph"><i class="glyphicon glyphicon-glass"></i></a></span>
+          <span><a href="#" id="coffeeGlyph"><img class="smallImg" src="../images/coffee.png"></a></span>
+          <span><a href="#" id="appleGlyph"><i class="glyphicon glyphicon-apple"></i></a></span>
+          <!-- this part is where i make the glyphcons appera -->
+          <span><a href="#" id="cutleryGlyph"><i class="glyphicon glyphicon-cutlery"></i></a></span>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    <% var currentCommentId; %>
+       <!--  DRINKS -->
+      <div id="drinksDiv" class="postsDiv drinkClass hidden">
+        <% for (var i =0; i<posts.length; i++){%>
+        <% if(posts[i].type === "Drink"){%>
+        <div class="postItemDiv">
+          <span id="userNameDrink"> <%= posts[i].user.userName %>:  </span>
+          <ul class="list-group">
+            <li class="list-group-item blackBackDrink postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
+
+           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+            <% if (!posts[i].comments){%>
+             nope
+            <%}else if(j == posts[i].comments.length -1){%>
+                <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackDrink commentItem" style="border-bottom-color:rgb(102,215, 255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackDrink commentItemEven" style="border-bottom-color:rgb(102,215, 255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
+                <%}%>
+              <%}else{%>
+                  <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackDrink commentItem" style="border-bottom-color:rgb(102,215, 255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackDrink commentItemEven" style="border-bottom-color:rgb(102,215, 255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
+                <%}%>
+                <%}}%>
+          </ul>
+          <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="glyphicon glyphicon-pencil"></i></a></span>
+
+        </div>
+     <%}%>
+        <%}%>
+      </div>
+      <!-- COFFEE -->
+      <div id="coffeeDiv" class="postsDiv coffeeClass hidden">
+        <% for (var i =0; i<posts.length; i++){%>
+        <% if(posts[i].type === "Coffee"){%>
+        <div class="postItemDiv">
+           <span id="userNameCoffee"> <%= posts[i].user.userName %>: </span>
+          <ul class="list-group">
+            <li class="list-group-item blackBackCoffee postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
+           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+            <% if (!posts[i].comments){%>
+             nope
+            <%}else if(j == posts[i].comments.length -1){%>
+                <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackCoffee commentItem" style="border-bottom-color:rgb(159,98,0)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>:  </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackCoffee commentItemEven" style="border-bottom-color:rgb(159,98,0)"><%= posts[i].comments[j].message %><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span></li>
+                <%}%>
+              <%}else{%>
+                  <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackCoffee commentItem" style="border-bottom-color:rgb(159,98,0)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackCoffee commentItemEven" style="border-bottom-color:rgb(159,98,0)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%>: </span></li>
+                <%}%>
+                <%}}%>
+          </ul>
+            <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="glyphicon glyphicon-pencil"></i></a></span>
+        </div>
+     <%}%>
+        <%}%>
+      </div>
+      <!-- BITE -->
+      <div id="biteDiv" class="postsDiv biteClass hidden">
+        <% for (var i =0; i<posts.length; i++){%>
+        <% if(posts[i].type === "Bite"){%>
+        <div class="postItemDiv">
+           <span id="userNameBite"> <%= posts[i].user.userName %>: </span>
+          <ul class="list-group">
+            <li class="list-group-item blackBackBite postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
+           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+            <% if (!posts[i].comments){%>
+             nope
+            <%}else if(j == posts[i].comments.length -1){%>
+                <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(156,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(156,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
+                <%}%>
+              <%}else{%>
+                  <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(156,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(156,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
+                <%}%>
+                <%}}%>
+          </ul>
+           <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="glyphicon glyphicon-pencil"></i></a></span>
+        </div>
+     <%}%>
+        <%}%>
+      </div>
+      <!-- MEAL -->
+      <div id="mealDiv" class="postsDiv mealClass hidden">
+        <% for (var i =0; i<posts.length; i++){%>
+        <% if(posts[i].type === "Meal"){%>
+        <div class="postItemDiv">
+         <span id="userNameMeal"> <%= posts[i].user.userName %>: </span>
+          <ul class="list-group">
+            <li class="list-group-item blackBackMeal postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
+            <% for (var j = 0; j < posts[i].comments.length; j++){%>
+            <% if (!posts[i].comments){%>
+             nope
+            <%}else if(j == posts[i].comments.length -1){%>
+                <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackMeal commentItem" style="border-bottom-color:rgb(251,83,43"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackMeal commentItemEven" style="border-bottom-color:rgb(251,83,43"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
+                <%}%>
+              <%}else{%>
+                  <%if(j % 2 == 0){%>
+                <li class="list-group-item grayBackMeal commentItem" style="border-bottom-color:rgb(251,83,43"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <%}else{%>
+                <li class="list-group-item grayBackMeal commentItemEven" style="border-bottom-color:rgb(251,83,43"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
+                <%}%>
+                <%}}%>
+          </ul>
+            <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="glyphicon glyphicon-pencil"></i></a></span>
+        </div>
+     <%}%>
+        <%}%>
+      </div>
+   </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+<!-- ******Modals****** -->
+
+
+<div class="modal fade" id="postModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Create a post</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/main/post" id="postForm" method="POST" role="form">
+          <legend>What are you up to, where are you going and what are you doing there?</legend>
+          <ul class="list-group">
+          <div class="form-group">
+          <li class="list-group-item signInGroup">
+            <label for="">Message:</label>
+            <textarea type="text" class="form-control" name="postMessage" placeholder="Your Message"></textarea>
+          </li>
+          <li class="list-group-item signInGroup">
+            <label for="">at:</label>
+            <input type="text" class="form-control" name="postBusiness" placeholder="Business Name">
+          </li>
+          <li class="list-group-item signInGroup">
+          For a:
+           <select id="drink-type" name="postActivity" class="form-control postActivity">
+              <option value="Drink">Drink</option>
+              <option value="Coffee">Coffee</option>
+              <option value="Bite">Bite</option>
+              <option value="Meal">Meal</option>
+           </select>
+
+          </li>
+             </ul>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="postSubmit">Submit</button>
+      </div>
+      </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="modal fade" id="commentModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">You tryin' to chill?</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/main/post/comment" id="commentForm" method="POST" role="form">
+          <legend>Add a comment:</legend>
+          <ul class="list-group">
+          <div class="form-group">
+          <li class="list-group-item signInGroup">
+            <label for="">Message:</label>
+            <textarea type="text" class="form-control" name="commentMessage" placeholder="Your Comment"></textarea>
+          </li>
+          <input  class="form-control" type="hidden" id="hiddenCommentInput" name="postId" value=" ">
+             </ul>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="commentSubmit">Submit</button>
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<% include ../partials/footer %>

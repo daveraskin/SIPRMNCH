@@ -1,0 +1,226 @@
+/*Global*/
+.spaceMaker{
+  min-height:50px;
+}
+.list-group-item{
+  border-color: rgb(50,50,60);
+}
+.blackBack{
+  background-color:rgba(26,26,29,.5);
+}
+.blackBackDrink{
+background-color:rgba(26,26,29,.5);
+}
+.blackBackDrink{
+background-color:rgba(26,26,29,.5);
+border-color: rgb(41,101,168);
+}
+.blackBackCoffee{
+background-color:rgba(26,26,29,.5);
+border-color: rgb(169,108,0);
+}
+.blackBackCoffee a{
+color: rgb(169,108,0);
+}
+.blackBackBite{
+background-color:rgba(26,26,29,.5);
+border-color: rgb(156,97,255);
+}
+.blackBackBite a{
+color: rgb(106,97,255);
+}
+.blackBackMeal{
+background-color:rgba(26,26,29,.5);
+border-color: orange;
+}
+.blackBackMeal a{
+color: orange;
+}
+.grayBackDrink{
+  background-color:rgba(228,229,233,.9);
+  border-right-color: rgb(41,101,168);
+  border-left-color: rgb(41,101,168);
+}
+.grayBackCoffee{
+  background-color:rgba(228,229,233,.9);
+  border-right-color:rgb(169,108,0);
+  border-left-color:rgb(169,108,0);
+}
+.grayBackBite{
+  background-color:rgba(228,229,233,.9);
+  border-right-color: rgb(126,97,255);
+  border-left-color: rgb(126,97,255);
+}
+.grayBackMeal{
+  background-color:rgba(228,229,233,.9);
+  border-right-color: orange;
+  border-left-color: orange;
+}
+.list-group{
+  margin-bottom:0;
+}
+
+
+.navBar{
+  z-index:10;
+}
+.modal{
+  color:rgb(67,67,67);
+}
+.signUpGroup{
+  border:none;
+}
+.signInGroup{
+   border:none;
+}
+
+
+/*Index*/
+body{
+  background-color: rgb(15,15,16);
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: rgb(225,237,249);
+}
+.glyphicon{
+  color:rgba(45,45,45,1);
+  margin-top:50px;
+}
+.glyphicon.glyphicon-cutlery{
+  color:rgba(55,55,55,1);
+}
+.glyphicon.glyphicon-pencil{
+  margin-top:0;
+  color:rgb(218,232,248);
+}
+.mainTitle{
+  text-align: center;
+  color:white;
+}
+.indexBtnDiv{
+  text-align:center;
+}
+/*Main Page*/
+#mainGreeting{
+  color:orange;
+}
+#mainSpan{
+  font-size:128px;
+  text-align:center;
+}
+/*#drinksDiv {
+  overflow:auto;
+  max-height:450px;
+}
+#coffeeDiv {
+  overflow:auto;
+  max-height:450px;
+}
+#biteDiv {
+  overflow:auto;
+  max-height:450px;
+}
+#mealDiv {
+  overflow:auto;
+  max-height:450px;
+}*/
+.smallImg{
+  height:200px;
+  width:200px;
+  padding-bottom:40px;
+}
+.postsDiv{
+  color:orange;
+  font-size:20px;
+}
+.postItem{
+  text-align:center;
+  color: rgb(225,237,249);
+  font-size:20px;
+
+}
+.jumboContainer{
+  background-color:rgba(26,26,29,1);
+  border:3px solid rgb(30,79,147);
+  border-bottom-left-radius:45px;
+  border-bottom-right-radius:45px;
+  padding-bottom:-60px;
+  z-index:-1;
+  /*-webkit-filter: blur(1px);*/
+
+}
+.jumbotron{
+  background-color:rgb(15,15,16);
+  margin-top:-100px;
+
+}
+#mainPlus{
+  font-size:32px;
+  color:orange;
+}
+
+.commentItem{
+   color:rgb(38,38,38);
+  text-align:left;
+  font-size:15px;
+}
+.commentItemEven{
+   color:rgb(38,38,38);
+  text-align:right;
+  font-size:15px;
+}
+#commentUserName{
+color:rgb(247,0,94);
+font-weight: bold;
+
+}
+#commentUserNameEven{
+color:rgb(175,45,255);
+font-weight: bold;
+text-align:right;
+
+}
+
+
+#userNameDrink{
+  font-family: 'Noto Sans', sans-serif;
+  font-size:24px;
+  color: rgb(41,101,168);
+}
+#userNameCoffee{
+  font-family: 'Noto Sans', sans-serif;
+  font-size:24px;
+  color: rgb(169,108,0);
+}
+#userNameBite{
+  font-family: 'Noto Sans', sans-serif;
+  font-size:24px;
+  color:rgb(106,97,255);
+}
+#userNameMeal{
+  font-family: 'Noto Sans', sans-serif;
+  font-size:24px;
+  color: orange;
+}
+.at{
+  color:rgb(83,209,237);
+}
+.hidden{
+  display:none;
+}
+.time{
+  color: rgb(225,237,249);
+}
+
+/*Show Page*/
+#restaurantTitle{
+  color:orange;
+}
+.showImage{
+  border-radius:10px;
+  border: 2px solid white;
+}
+.list-group-item:first-child {
+border-top-left-radius:23px;
+border-top-right-radius:23px;
+}
+/*Modals*/
