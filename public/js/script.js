@@ -2,6 +2,11 @@ $(function(){
 
 var postId;
 
+
+    // $(".indexBtn").on("hover", function(e){
+    //   e.preventDefault();
+
+    // })
     $("#postForm").on("submit", function(e){
       e.preventDefault();
       var formData = $(this).serialize();

@@ -11,7 +11,9 @@ var multer  = require('multer')
 var session = require('express-session');
 var flash = require('connect-flash');
 var db = require("./models");
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcrypt');
+var cloudinary = require('cloudinary');
+var fs = require('fs')
 // var mainCtrl = require("./controllers/main");
 
 app.use(express.static(__dirname + "/public"));
@@ -52,16 +54,15 @@ app.get("/", function(req,res){
     var myDate = new Date();
     myDate.setHours(myDate.getHours() - 1);
 
-    // , where:{
-    // createdAt:{
-    //   $gt:myDate
-    // }}
 
     db.post.findAll({
       include:[
         db.user,
         {model:db.comment,include:[db.user]}
-      ]
+      ], where:{
+    createdAt:{
+      $gt:myDate
+    }}
     }).then(function(posts){
         posts = posts.map(function(postData){
           var post = postData.get();
@@ -75,8 +76,6 @@ app.get("/", function(req,res){
         //     comment.user = commentsData.user.get();
         //     return comment;
         //   })
-
-          console.log('posts',posts[0].comments[0].user)
           res.render('main/main',{user:user, alerts:alerts, posts: posts});
         })
 
@@ -87,13 +86,23 @@ app.get("/", function(req,res){
 }
 });
 
+
+
 app.post('/signup',function(req,res){
     var userQuery={userName:req.body.username};
-    var userData={
+    var uploadedFile = __dirname+'/'+req.files.pic.path;
+    var newFile;
+
+
+     cloudinary.uploader.upload(uploadedFile,function(result){
+    console.log(result);
+    newFile = result;
+        var userData={
       userName: req.body.userName,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      password: req.body.password};
+      password: req.body.password,
+      picture: newFile.public_id};
     db.user.findOrCreate({where:userQuery,defaults:userData})
       .spread(function(user, created){
         if(created){
@@ -102,6 +111,7 @@ app.post('/signup',function(req,res){
                   userName: user.userName,
                   firstName: user.firstName,
                   lastName: user.lastName,
+                  picture: user.picture
                 }
           res.redirect("/")
         }else{
@@ -112,6 +122,9 @@ app.post('/signup',function(req,res){
         console.log("error",  error);
         res.send(error)
       })
+  });
+
+
     // res.redirect('/');
 });
 
@@ -127,6 +140,7 @@ app.post('/login',function(req,res){
                   userName: user.userName,
                   firstName: user.firstName,
                   lastName: user.lastName,
+                  picture: user.picture
                 }
                 res.redirect("/")
                 }else{
@@ -140,6 +154,6 @@ app.post('/login',function(req,res){
 });
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Listening on port 3000. SIPRMNCH is online.")
 })
