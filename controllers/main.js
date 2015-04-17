@@ -122,10 +122,12 @@ router.post('/update', function(req,res){
     newFile = result;
     console.log("result**", newFile)
     db.user.find({where: {id: req.session.user.id}}).then(function(data){
-      user = data.get()
-      console.log("user**", user)
-      user.picture = newFile.public_id;
-      res.redirect("/")
+      // console.log("user**", userInfo);
+      data.picture = newFile.public_id;
+      data.save().then(function(){
+          res.redirect("/")
+      })
+
   })
 
   })
