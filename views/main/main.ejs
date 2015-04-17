@@ -20,36 +20,36 @@
     <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-    <%= console.log(posts[0].createdAt.getTime()) %>
+
 <% var date = new Date() %>
 
        <!--  DRINKS -->
       <div id="drinksDiv" class="postsDiv drinkClass hidden">
-        <% for (var i =0; i<posts.length; i++){%>
+        <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Drink"){%>
         <div class="postItemDiv">
          <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameDrink"> <%= posts[i].user.userName %>:  </span>
           <ul class="list-group">
             <li class="list-group-item blackBackDrink postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
 
-           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+           <% for (var j = posts[i].comments.length -1 ; j >=0; j--){%>
             <% if (!posts[i].comments){%>
              nope
             <%}else if(j == posts[i].comments.length -1){%>
-                <%if(j % 2 == 0){%>
+                <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackDrink commentItem" style="border-bottom-color:rgb(41,101,168)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackDrink commentItemEven" style="border-bottom-color:rgb(41,101,168)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
                 <%}%>
               <%}else{%>
-                  <%if(j % 2 == 0){%>
+                  <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackDrink commentItem" style="border-bottom-color:rgb(41,101,168)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackDrink commentItemEven" style="border-bottom-color:rgb(41,101,168)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
                 <%}%>
                 <%}}%>
           </ul>
-          <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
+          <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
 
         </div>
@@ -58,30 +58,30 @@
       </div>
       <!-- COFFEE -->
       <div id="coffeeDiv" class="postsDiv coffeeClass hidden">
-        <% for (var i =0; i<posts.length; i++){%>
+         <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Coffee"){%>
         <div class="postItemDiv">
             <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameCoffee"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackCoffee postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
-           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+           <% for (var j = posts[i].comments.length -1 ; j >=0; j--){%>
             <% if (!posts[i].comments){%>
              nope
             <%}else if(j == posts[i].comments.length -1){%>
-                <%if(j % 2 == 0){%>
+                <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackCoffee commentItem" style="border-bottom-color:rgb(159,98,0)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>:  </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackCoffee commentItemEven" style="border-bottom-color:rgb(159,98,0)"><%= posts[i].comments[j].message %><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span></li>
                 <%}%>
               <%}else{%>
-                  <%if(j % 2 == 0){%>
+                  <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackCoffee commentItem" style="border-bottom-color:rgb(159,98,0)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackCoffee commentItemEven" style="border-bottom-color:rgb(159,98,0)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%>: </span></li>
                 <%}%>
                 <%}}%>
           </ul>
-            <span class="time"><%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
+            <span class="time"><%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>
@@ -89,30 +89,30 @@
       </div>
       <!-- BITE -->
       <div id="biteDiv" class="postsDiv biteClass hidden">
-        <% for (var i =0; i<posts.length; i++){%>
+         <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Bite"){%>
         <div class="postItemDiv">
            <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png">  <span id="userNameBite"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackBite postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
-           <% for (var j = 0; j < posts[i].comments.length; j++){%>
+           <% for (var j = posts[i].comments.length -1 ; j >=0; j--){%>
             <% if (!posts[i].comments){%>
              nope
             <%}else if(j == posts[i].comments.length -1){%>
-                <%if(j % 2 == 0){%>
+                <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(106,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(106,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
                 <%}%>
               <%}else{%>
-                  <%if(j % 2 == 0){%>
+                  <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(106,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(106,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
                 <%}%>
                 <%}}%>
           </ul>
-           <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
+           <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>
@@ -120,30 +120,30 @@
       </div>
       <!-- MEAL -->
       <div id="mealDiv" class="postsDiv mealClass hidden">
-        <% for (var i =0; i<posts.length; i++){%>
+         <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Meal"){%>
         <div class="postItemDiv">
           <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameMeal"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackMeal postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
-            <% for (var j = 0; j < posts[i].comments.length; j++){%>
+            <% for (var j = posts[i].comments.length -1 ; j >=0; j--){%>
             <% if (!posts[i].comments){%>
              nope
             <%}else if(j == posts[i].comments.length -1){%>
-                <%if(j % 2 == 0){%>
+                <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackMeal commentItem" style="border-bottom-color:rgb(251,83,43"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackMeal commentItemEven" style="border-bottom-color:rgb(251,83,43"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
                 <%}%>
               <%}else{%>
-                  <%if(j % 2 == 0){%>
+                  <%if(j % 2 !== 0){%>
                 <li class="list-group-item grayBackMeal commentItem" style="border-bottom-color:rgb(251,83,43"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
                 <li class="list-group-item grayBackMeal commentItemEven" style="border-bottom-color:rgb(251,83,43"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%></span></li>
                 <%}%>
                 <%}}%>
           </ul>
-            <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
+            <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>

@@ -161,6 +161,8 @@ font-size:127px;
   border:4px solid white;
   font-family: 'Noto Sans', sans-serif;
   border-radius:0;
+  transition:2s;
+  -webkit-transition:1s;
 }
 .mainContainer{
 
@@ -292,6 +294,12 @@ text-align:right;
   min-height:750px;
   overflow:hidden;
 }
+.hoverBtn{
+transition: 1s;
+-webkit-transition: 1s;
+background-color:rgba(255,255,255,1);
+color:black;
+}
 /*Show Page*/
 #restaurantTitle{
   color:orange;
@@ -313,5 +321,5 @@ padding-left:25px;
 padding-right:25px;
 }
 .showDiv{
-  font-size:32px;
+  font-size:28px;
 }

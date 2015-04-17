@@ -57,7 +57,7 @@ app.get("/", function(req,res){
     var user = req.getUser();
     var alerts = req.flash();
     var myDate = new Date();
-    myDate.setHours(myDate.getHours() - 1);
+    myDate.setHours(myDate.getHours() - 2);
 
 // , where:{
 //     createdAt:{
@@ -68,7 +68,10 @@ app.get("/", function(req,res){
       include:[
         db.user,
         {model:db.comment,include:[db.user]}
-      ]
+      ], where:{
+    createdAt:{
+      $gt:myDate
+    }}
     }).then(function(posts){
         posts = posts.map(function(postData){
           var post = postData.get();
