@@ -90,45 +90,45 @@ body{
   background-image:url("../images/indexBlue.jpg") ;
   font-family: 'Noto Sans', sans-serif;
 }
-.glyphicon{
+.fa{
   color:rgba(45,45,45,1);
   padding-left:25px;
-  padding-right:25px;
-  margin-top:50px;
+  padding-right: 25px;
+}
+.glyphicon{
+  color:rgba(45,45,45,1);
+  padding-left:35px;
+  padding-right:35px;
+  padding-top:50px;
+  padding-bottom:35px;
 
 }
-.glyphicon-cutlery{
-  color:rgba(55,55,55,1);
-}
+
 .glyphicon.glyphicon-pencil{
   margin-top:0;
   color:rgb(218,232,248);
   -webkit-filter: blur(0px);
 }
-.fa{
-  color:rgba(55,55,55,1);
-  padding-left:25px;
-  padding-right: 25px;
-}
+
 .cutleryActive{
   -webkit-transition: 1s;
   transition: 1s;
   color:orange;
-  font-size:130px;
+  font-size:132px;
   -webkit-filter: blur(0px);
 }
 .coffeeActive{
   -webkit-transition: 1s;
   transition: 1s;
   color: rgb(153,90,0);
-  font-size:130px;
+  font-size:132px;
   -webkit-filter: blur(0px);
 }
 .glassActive{
   -webkit-transition: 1s;
   transition: 1s;
 color: rgb(89,160,224);
-font-size:130px;
+font-size:132px;
 -webkit-filter: blur(0px);
 }
 .appleActive{
@@ -136,13 +136,14 @@ font-size:130px;
   transition: 1s;
 color:rgb(106,97,255);
 -webkit-filter: blur(0px);
-font-size:130px;
+font-size:132px;
 }
 .profileImg{
   padding-bottom:8px;
 }
 .inactive{
 -webkit-filter: blur(1px);
+font-size:126px;
 }
 .mainTitle{
   text-align: center;
@@ -304,3 +305,10 @@ border-top-left-radius:23px;
 border-top-right-radius:23px;
 }
 /*Modals*/
+
+.fa-coffee:before {
+vertical-align: bottom;
+line-height: 139px;
+padding-left:25px;
+padding-right:25px;
+}
