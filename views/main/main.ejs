@@ -20,7 +20,9 @@
     <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-    <% var currentCommentId; %>
+    <%= console.log(posts[0].createdAt.getTime()) %>
+<% var date = new Date() %>
+
        <!--  DRINKS -->
       <div id="drinksDiv" class="postsDiv drinkClass hidden">
         <% for (var i =0; i<posts.length; i++){%>
@@ -47,7 +49,7 @@
                 <%}%>
                 <%}}%>
           </ul>
-          <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+          <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
 
         </div>
@@ -79,7 +81,7 @@
                 <%}%>
                 <%}}%>
           </ul>
-            <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <span class="time"><%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>
@@ -110,7 +112,7 @@
                 <%}%>
                 <%}}%>
           </ul>
-           <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+           <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>
@@ -141,7 +143,7 @@
                 <%}%>
                 <%}}%>
           </ul>
-            <span class="time"> <%= posts[i].createdAt.getHours() > 12 ? posts[i].createdAt.getHours() - 12 : posts[i].createdAt.getHours()%>:<%= posts[i].createdAt.getMinutes() %>
+            <span class="time"> <%= Math.floor(((date.getTime() - posts[i].createdAt.getTime())/1000)/60) %> Minutes ago.
             <a data-toggle="modal" class="pencilButton" id="<%=posts[i].id%>" href="#commentModal"><i class="fa fa-pencil"></i></a></span>
         </div>
      <%}%>

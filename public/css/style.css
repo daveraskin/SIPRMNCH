@@ -114,21 +114,21 @@ body{
   -webkit-transition: 1s;
   transition: 1s;
   color:orange;
-  font-size:132px;
+  font-size:130px;
   -webkit-filter: blur(0px);
 }
 .coffeeActive{
   -webkit-transition: 1s;
   transition: 1s;
   color: rgb(153,90,0);
-  font-size:132px;
+  font-size:130px;
   -webkit-filter: blur(0px);
 }
 .glassActive{
   -webkit-transition: 1s;
   transition: 1s;
 color: rgb(89,160,224);
-font-size:132px;
+font-size:130px;
 -webkit-filter: blur(0px);
 }
 .appleActive{
@@ -136,14 +136,14 @@ font-size:132px;
   transition: 1s;
 color:rgb(106,97,255);
 -webkit-filter: blur(0px);
-font-size:132px;
+font-size:130px;
 }
 .profileImg{
   padding-bottom:8px;
 }
 .inactive{
--webkit-filter: blur(1px);
-font-size:126px;
+-webkit-filter: blur(1.5px);
+font-size:127px;
 }
 .mainTitle{
   text-align: center;
@@ -211,7 +211,7 @@ font-size:126px;
   padding-bottom:50px;
 }
 .jumboContainer{
-  background-color:rgba(26,26,29,1);
+  background-color:rgba(16,22,36,1);
   border:3px solid rgb(30,79,147);
   border-bottom-left-radius:45px;
   border-bottom-right-radius:45px;
@@ -311,4 +311,7 @@ vertical-align: bottom;
 line-height: 139px;
 padding-left:25px;
 padding-right:25px;
+}
+.showDiv{
+  font-size:32px;
 }
