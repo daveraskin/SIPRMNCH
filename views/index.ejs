@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>SIPRMNCH</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -19,9 +20,11 @@
 <h1 class="mainTitle"> SIPRMNCH </h1>
 
 
+
 <div class="row">
    <div class="col-sm-4"></div>
    <div class="col-sm-4 indexBtnDiv">
+   <span id="warningSpan"> <% include ./partials/alerts.ejs %> </span>
     <button type="button" class="btn btn-primary btn-lg indexBtn" data-toggle="modal" data-target="#signUp">
       Sign Up
     </button>
@@ -105,6 +108,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="signInLabel">Welcome Back.</h4>
       </div>
+
       <div class="modal-body">
         <form action="/login" method="POST" role="form">
           <legend>It's quick and easy!</legend>

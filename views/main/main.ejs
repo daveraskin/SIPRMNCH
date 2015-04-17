@@ -10,7 +10,7 @@
         <h1 id="mainSpan">
           <span><a href="#" id="glassGlyph"><i class="glyphicon glyphicon-glass"></i></a></span>
           <span><a href="#" id="coffeeGlyph"><i class="fa fa-coffee"></i><!-- <img class="smallImg" src="../images/coffee.png"> --></a></span>
-          <span><a href="#" id="appleGlyph"><i class="glyphicon glyphicon-apple"></i></a></span>
+          <span id="dumbSpan"><a href="#" id="appleGlyph"><i class="glyphicon glyphicon-apple"></i></a></span>
           <!-- this part is where i make the glyphcons appera -->
           <span><a href="#" id="cutleryGlyph"><i class="glyphicon glyphicon-cutlery"></i></a></span>
         </h1>
@@ -26,7 +26,7 @@
         <% for (var i =0; i<posts.length; i++){%>
         <% if(posts[i].type === "Drink"){%>
         <div class="postItemDiv">
-         <img src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameDrink"> <%= posts[i].user.userName %>:  </span>
+         <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameDrink"> <%= posts[i].user.userName %>:  </span>
           <ul class="list-group">
             <li class="list-group-item blackBackDrink postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
 
@@ -59,7 +59,7 @@
         <% for (var i =0; i<posts.length; i++){%>
         <% if(posts[i].type === "Coffee"){%>
         <div class="postItemDiv">
-            <img src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameCoffee"> <%= posts[i].user.userName %>: </span>
+            <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameCoffee"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackCoffee postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
            <% for (var j = 0; j < posts[i].comments.length; j++){%>
@@ -90,7 +90,7 @@
         <% for (var i =0; i<posts.length; i++){%>
         <% if(posts[i].type === "Bite"){%>
         <div class="postItemDiv">
-           <img src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png">  <span id="userNameBite"> <%= posts[i].user.userName %>: </span>
+           <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png">  <span id="userNameBite"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackBite postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
            <% for (var j = 0; j < posts[i].comments.length; j++){%>
@@ -98,15 +98,15 @@
              nope
             <%}else if(j == posts[i].comments.length -1){%>
                 <%if(j % 2 == 0){%>
-                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(150,227,9)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(106,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
-                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(150,227,9)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
+                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(106,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
                 <%}%>
               <%}else{%>
                   <%if(j % 2 == 0){%>
-                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(150,227,9)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
+                <li class="list-group-item grayBackBite commentItem" style="border-bottom-color:rgb(106,97,255)"><span id="commentUserName"><%= posts[i].comments[j].user.dataValues.userName%>: </span><%= posts[i].comments[j].message %></li>
                 <%}else{%>
-                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(150,227,9)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
+                <li class="list-group-item grayBackBite commentItemEven" style="border-bottom-color:rgb(106,97,255)"><%= posts[i].comments[j].message %><span id="commentUserName"> :<%= posts[i].comments[j].user.dataValues.userName%> </span></li>
                 <%}%>
                 <%}}%>
           </ul>
@@ -121,7 +121,7 @@
         <% for (var i =0; i<posts.length; i++){%>
         <% if(posts[i].type === "Meal"){%>
         <div class="postItemDiv">
-          <img src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameMeal"> <%= posts[i].user.userName %>: </span>
+          <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameMeal"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
             <li class="list-group-item blackBackMeal postItem"> <%= posts[i].message %> <span class="at"> @ </span><a href="/main/show/<%= posts[i].business %>"> <%= posts[i].business %></a> </li>
             <% for (var j = 0; j < posts[i].comments.length; j++){%>
@@ -230,6 +230,34 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="updateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Update Your Account</h4>
+      </div>
+      <div class="modal-body">
+       <form enctype="multipart/form-data" action="/main/update" method="POST" id="updateForm">
+        <ul class="list-group">
+        <div class="form-group">
+          <li class="list-group-item signUpGroup">
+            <label for="">Update your user photo.</label>
+            <input type="file" class="form-control" name="pic2" placeholder="Input field">
+          </li>
+             </ul>
+
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="updateBtn">Save changes</button>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 

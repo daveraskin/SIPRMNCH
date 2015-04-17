@@ -27,6 +27,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
 app.use(flash());
 //custom middleware for "is user logged in"
 app.use(function(req,res,next){
@@ -44,6 +45,10 @@ app.use(function(req,res,next){
     return req.session.user || false;
   }
   next();
+});
+app.use(function(req,res,next){
+  res.locals.alerts=req.flash();
+  next();
 })
 app.use('/main',require('./controllers/main.js'));
 
@@ -54,15 +59,16 @@ app.get("/", function(req,res){
     var myDate = new Date();
     myDate.setHours(myDate.getHours() - 1);
 
+// , where:{
+//     createdAt:{
+//       $gt:myDate
+//     }}
 
     db.post.findAll({
       include:[
         db.user,
         {model:db.comment,include:[db.user]}
-      ], where:{
-    createdAt:{
-      $gt:myDate
-    }}
+      ]
     }).then(function(posts){
         posts = posts.map(function(postData){
           var post = postData.get();
@@ -90,7 +96,12 @@ app.get("/", function(req,res){
 
 app.post('/signup',function(req,res){
     var userQuery={userName:req.body.username};
-    var uploadedFile = __dirname+'/'+req.files.pic.path;
+    var uploadedFile;
+    if(req.files.pic){
+      uploadedFile = __dirname+'/'+req.files.pic.path
+    }else{
+      uploadedFile = './public/images/defaultPic.jpg'
+    }
     var newFile;
 
 
@@ -103,7 +114,7 @@ app.post('/signup',function(req,res){
       lastName: req.body.lastName,
       password: req.body.password,
       picture: newFile.public_id};
-    db.user.findOrCreate({where:userQuery,defaults:userData})
+    db.user.findOrCreate({where:{userName: req.body.userName},defaults:userData})
       .spread(function(user, created){
         if(created){
           req.session.user = {
@@ -115,12 +126,13 @@ app.post('/signup',function(req,res){
                 }
           res.redirect("/")
         }else{
-          res.send("e-mail already exists")
+          req.flash('primary','Your username already exists.  Try again')
+                res.redirect("/");
         }
       })
       .catch(function(error){
         console.log("error",  error);
-        res.send(error)
+        req.flash('primary','This account already exists!')
       })
   });
 
@@ -144,11 +156,13 @@ app.post('/login',function(req,res){
                 }
                 res.redirect("/")
                 }else{
-                res.send("We found you, but your password is wrong. What's up with that???")
+                req.flash('primary','Your username or password seems to be off.  \n\ Check your capslock and try again!')
+                res.redirect("/");
               }
             })
         }else{
-          res.send('unknown user. please sign up!')
+          req.flash('primary','Your username or password seems to be off.  \n\ Check your capslock and try again!')
+          res.redirect("/");
         }
       })
 });

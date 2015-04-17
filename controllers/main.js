@@ -8,6 +8,7 @@ var yelp = require("yelp").createClient({
   token: process.env.YELP_TOKEN,
   token_secret: process.env.YELP_TOKEN_SECRET
 });
+var cloudinary = require('cloudinary');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -34,13 +35,15 @@ if(req.getUser()){
 
     yelp.search({term: req.body.restaurant, location: "seattle"}, function(error, data) {
       info = data.businesses.map(function(data){
+        console.log("**********************************", data)
         return {name: data.name,
                 image: data.image_url,
                 rating: data.rating,
-                location: data.location
+                location: data.location,
+                phone: data.display_phone
               }
       })
-      console.log(info[0].location)
+      // console.log(info[0])
       res.render("main/show", {user: user, alerts: alerts, info: info})
   });
 
@@ -62,7 +65,8 @@ if(req.getUser()){
         return {name: data.name,
                 image: data.image_url,
                 rating: data.rating,
-                location: data.location
+                location: data.location,
+                phone: data.display_phone
               }
       })
       console.log(info[0].location)
@@ -109,6 +113,27 @@ router.post('/post/comment',function(req,res){
     })
 
   });
+
+var newFile;
+
+router.post('/update', function(req,res){
+  var picture = req.files.pic2.path;
+  cloudinary.uploader.upload(picture,function(result){
+    newFile = result;
+    console.log("result**", newFile)
+    db.user.find({where: {id: req.session.user.id}}).then(function(data){
+      user = data.get()
+      console.log("user**", user)
+      user.picture = newFile.public_id;
+      res.redirect("/")
+  })
+
+  })
+
+
+})
+
+
 
 router.get('/logout',function(req,res){
     delete req.session.user;

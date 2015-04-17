@@ -76,7 +76,11 @@ color: orange;
 
 
 /*Index*/
-
+.alert{
+  border: 3px solid white;
+  border-radius:5px;
+  background-color:rgba(55,55,55,.5);
+}
 body{
    background-image:url("../images/indexBlur.jpg") ;
   font-family: 'Quattrocento Sans', sans-serif;
@@ -88,14 +92,57 @@ body{
 }
 .glyphicon{
   color:rgba(45,45,45,1);
+  padding-left:25px;
+  padding-right:25px;
   margin-top:50px;
+
 }
-.glyphicon.glyphicon-cutlery{
+.glyphicon-cutlery{
   color:rgba(55,55,55,1);
 }
 .glyphicon.glyphicon-pencil{
   margin-top:0;
   color:rgb(218,232,248);
+  -webkit-filter: blur(0px);
+}
+.fa{
+  color:rgba(55,55,55,1);
+  padding-left:25px;
+  padding-right: 25px;
+}
+.cutleryActive{
+  -webkit-transition: 1s;
+  transition: 1s;
+  color:orange;
+  font-size:130px;
+  -webkit-filter: blur(0px);
+}
+.coffeeActive{
+  -webkit-transition: 1s;
+  transition: 1s;
+  color: rgb(153,90,0);
+  font-size:130px;
+  -webkit-filter: blur(0px);
+}
+.glassActive{
+  -webkit-transition: 1s;
+  transition: 1s;
+color: rgb(89,160,224);
+font-size:130px;
+-webkit-filter: blur(0px);
+}
+.appleActive{
+  -webkit-transition: 1s;
+  transition: 1s;
+color:rgb(106,97,255);
+-webkit-filter: blur(0px);
+font-size:130px;
+}
+.profileImg{
+  padding-bottom:8px;
+}
+.inactive{
+-webkit-filter: blur(1px);
 }
 .mainTitle{
   text-align: center;
@@ -125,22 +172,22 @@ body{
   font-size:128px;
   text-align:center;
 }
-/*#drinksDiv {
+#drinksDiv {
   overflow:auto;
-  max-height:450px;
+  max-height:550px;
 }
 #coffeeDiv {
   overflow:auto;
-  max-height:450px;
+  max-height:550px;
 }
 #biteDiv {
   overflow:auto;
-  max-height:450px;
+  max-height:550px;
 }
 #mealDiv {
   overflow:auto;
-  max-height:450px;
-}*/
+  max-height:550px;
+}
 .smallImg{
   height:200px;
   width:200px;
@@ -152,15 +199,15 @@ body{
 .postsDiv{
   color:orange;
   font-size:20px;
-
-  border-radius:25px;
-
 }
 .postItem{
   text-align:center;
   color: rgb(225,237,249);
   font-size:20px;
 
+}
+.postItemDiv{
+  padding-bottom:50px;
 }
 .jumboContainer{
   background-color:rgba(26,26,29,1);
@@ -236,7 +283,7 @@ text-align:right;
 }
 .absoluteDiv{
   background-color:rgba(15,15,16,.95);
-  position:fixed;
+  position:absolute;
   top:25%;
   left:25%;
   /*margin-left:16.8%;*/
@@ -244,7 +291,6 @@ text-align:right;
   min-height:750px;
   overflow:hidden;
 }
-
 /*Show Page*/
 #restaurantTitle{
   color:orange;

@@ -57,30 +57,85 @@ $(".pencilButton").on("click", function(e){
 
     $("#glassGlyph").on("click", function(e){
       e.preventDefault();
-       $(".postsDiv").addClass("hidden");
+      $(".glyphicon-glass").removeClass("inactive").addClass("glassActive");
+       $(".glyphicon-cutlery").removeClass("cutleryActive").addClass("inactive");
+       $(".fa-coffee").removeClass("coffeeActive").addClass("inactive");
+       $(".glyphicon-apple").removeClass("appleActive").addClass("inactive");
+       $(".postsDiv").animate({
+    opacity: 0
+  }, 250, function() {
+        $(this).addClass("hidden");
       $("#drinksDiv").removeClass("hidden");
-
+      $(".postsDiv").animate({
+    opacity: 1
+  }, 400);
     });
+     });
 
     $("#coffeeGlyph").on("click", function(e){
       e.preventDefault();
+      $(".fa-coffee").removeClass("inactive").addClass("coffeeActive");
+       $(".glyphicon-cutlery").removeClass("cutleryActive").addClass("inactive");
+       $(".glyphicon-glass").removeClass("glassActive").addClass("inactive");
+       $(".glyphicon-apple").removeClass("appleActive").addClass("inactive");
+      $(".postsDiv").animate({
+    opacity: 0
+  }, 250, function() {
       $(".postsDiv").addClass("hidden");
+
       $("#coffeeDiv").removeClass("hidden");
+       $(".postsDiv").animate({
+    opacity: 1
+  }, 400);
+    });
 
   });
 
     $("#appleGlyph").on("click", function(e){
       e.preventDefault();
+      $(".glyphicon-apple").removeClass("inactive").addClass("appleActive");
+       $(".glyphicon-cutlery").removeClass("cutleryActive").addClass("inactive");
+       $(".glyphicon-glass").removeClass("glassActive").addClass("inactive");
+       $(".fa-coffee").removeClass("coffeeActive").addClass("inactive");
+      $(".postsDiv").animate({
+    opacity: 0
+  }, 250, function() {
       $(".postsDiv").addClass("hidden");
+
       $("#biteDiv").removeClass("hidden");
+       $(".postsDiv").animate({
+    opacity: 1
+  }, 400);
+    });
 
   })
 
     $("#cutleryGlyph").on("click", function(e){
       e.preventDefault();
+       $(".glyphicon-cutlery").removeClass("inactive").addClass("cutleryActive");
+       $(".glyphicon-apple").removeClass("appleActive").addClass("inactive");
+       $(".glyphicon-glass").removeClass("glassActive").addClass("inactive");
+       $(".fa-coffee").removeClass("coffeeActive").addClass("inactive");
+      $(".postsDiv").animate({
+    opacity: 0
+  }, 250, function() {
       $(".postsDiv").addClass("hidden");
-      $("#mealDiv").removeClass("hidden");
 
+      $("#mealDiv").removeClass("hidden");
+      $(".postsDiv").animate({
+    opacity: 1
+  }, 400);
+    });
   })
 
-});
+// $("#updateForm").on("submit", function(e){
+//   e.preventDefault();
+
+//   console.log("clicked***************************************", formData);
+//        $.ajax({
+//             method: 'PUT',
+//             url: "/main/update",
+//             data: formData
+//           });
+// });
+})
