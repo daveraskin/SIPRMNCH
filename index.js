@@ -59,11 +59,6 @@ app.get("/", function(req,res){
     var myDate = new Date();
     myDate.setHours(myDate.getHours() - 1.5);
 
-// , where:{
-//     createdAt:{
-//       $gt:myDate
-//     }}
-
     db.post.findAll({
       include:[
         db.user,

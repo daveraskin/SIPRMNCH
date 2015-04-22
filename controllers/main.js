@@ -33,8 +33,8 @@ if(req.getUser()){
     var alerts = req.flash();
     var info;
 
-    yelp.search({term: req.body.restaurant, location: "seattle"}, function(error, data) {
-      info = data.businesses.map(function(data){
+    yelp.search({term: req.body.restaurant, location: "seattle"}, function(error, resultsData) {
+      info = resultsData.businesses.map(function(data){
         console.log("**********************************", data)
         return {name: data.name,
                 image: data.image_url,

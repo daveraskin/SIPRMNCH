@@ -335,3 +335,7 @@ padding-right:25px;
 .list-spacing{
   margin-bottom: 35px;
 }
+.aboutJumbotron{
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
