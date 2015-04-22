@@ -79,6 +79,11 @@ if(req.getUser()){
   }
 })
 
+router.get('/about', function(req,res){
+  var user = req.getUser();
+  res.render("main/about", {user:user})
+})
+
 router.post('/post',function(req,res){
   var message = req.body.postMessage;
   var activity = req.body.postActivity;

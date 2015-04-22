@@ -57,7 +57,7 @@ app.get("/", function(req,res){
     var user = req.getUser();
     var alerts = req.flash();
     var myDate = new Date();
-    myDate.setHours(myDate.getHours() - 10);
+    myDate.setHours(myDate.getHours() - 1.5);
 
 // , where:{
 //     createdAt:{

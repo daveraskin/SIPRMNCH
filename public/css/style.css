@@ -312,6 +312,10 @@ color:black;
 border-top-left-radius:23px;
 border-top-right-radius:23px;
 }
+.aboutContainer{
+  background-color:rgba(15,15,16,.5);
+  font:18px;
+}
 /*Modals*/
 
 .fa-coffee:before {
@@ -322,4 +326,12 @@ padding-right:25px;
 }
 .showDiv{
   font-size:28px;
+}
+.footer{
+  font-size:25px;
+  text-align: center;
+  background-color: rgba(15,15,16,.7);
+}
+.list-spacing{
+  margin-bottom: 35px;
 }

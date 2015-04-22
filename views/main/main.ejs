@@ -22,11 +22,17 @@
     <div class="col-sm-4">
 
 <% var date = new Date() %>
+<% var drinkCount = 0 %>
+<% var coffeeCount = 0 %>
+<% var biteCount = 0 %>
+<% var mealCount = 0 %>
 
        <!--  DRINKS -->
       <div id="drinksDiv" class="postsDiv drinkClass hidden">
+
         <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Drink"){%>
+        <% drinkCount++ %>
         <div class="postItemDiv">
          <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameDrink"> <%= posts[i].user.userName %>:  </span>
           <ul class="list-group">
@@ -60,6 +66,7 @@
       <div id="coffeeDiv" class="postsDiv coffeeClass hidden">
          <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Coffee"){%>
+        <% coffeeCount++ %>
         <div class="postItemDiv">
             <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameCoffee"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
@@ -91,6 +98,7 @@
       <div id="biteDiv" class="postsDiv biteClass hidden">
          <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Bite"){%>
+        <% biteCount++ %>
         <div class="postItemDiv">
            <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png">  <span id="userNameBite"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
@@ -122,6 +130,7 @@
       <div id="mealDiv" class="postsDiv mealClass hidden">
          <% for (var i =posts.length - 1; i>=0; i--){%>
         <% if(posts[i].type === "Meal"){%>
+        <% mealCount++ %>
         <div class="postItemDiv">
           <img class="profileImg" src="http://res.cloudinary.com/hwg4qfken/image/upload/c_fill,g_face,h_75,r_max,w_75/<%= posts[i].user.picture %>.png"> <span id="userNameMeal"> <%= posts[i].user.userName %>: </span>
           <ul class="list-group">
