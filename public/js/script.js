@@ -14,19 +14,8 @@ var postId;
        $.ajax({
             method: 'POST',
             url: "/main/post",
-            data: formData,
-            dataType: "html"
+            data: formData
           }).done(function(data){
-            if (drinkType === "Drink"){
-              $("#drinksDiv").prepend(data)
-            }else if(drinkType === "Coffee"){
-              $("#coffeeDiv").prepend(data)
-            }else if(drinkType === "Bite"){
-              $("#biteDiv").prepend(data)
-            }else if(drinkType === "Meal"){
-              $("#mealDiv").prepend(data)
-            }
-
             $("#postModal").modal('hide');
             $("#postForm")[0].reset();
           })

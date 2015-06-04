@@ -1,6 +1,7 @@
 "use strict";
 
 var bcrypt = require('bcrypt')
+var flash = require('connect-flash');
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("user", {
     userName: DataTypes.STRING,

@@ -103,9 +103,8 @@ app.post('/signup',function(req,res){
     var newFile;
 
 
-     cloudinary.uploader.upload(uploadedFile,function(result){
-    console.log(result);
-    newFile = result;
+     cloudinary.uploader.upload(uploadedFile,function(newImgData){
+    newFile = newImgData;
         var userData={
       userName: req.body.userName,
       firstName: req.body.firstName,
